@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project 
+    xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.jcertif.iot</groupId>
+    <artifactId>offline-box-gf-bootstrap</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>JCertif Offline Box Glassfish Bootstrap</name>
+    <description>
+        Starts up an embedded glassfish server to host Offline Box Services
+    </description>
+    
+    <properties>
+        <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+    </properties>
+
+    <organization>
+        <name>JCertif</name>
+        <url>http://www.jcertif.com/</url>
+    </organization>
+  
+    <scm>
+        <connection>scm:git:git://github.com/JCERTIFLab/JCertif-Offline-Box.git</connection>
+        <developerConnection>scm:git:git@github.com:JCERTIFLab/JCertif-Offline-Box.git</developerConnection>
+        <url>https://github.com/JCERTIFLab/JCertif-Offline-Box.git</url>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>jcertif-releases</id>
+            <url>http://ns395624.ip-176-31-120.eu:8080/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>jcertif-snapshots</id>
+            <url>http://ns395624.ip-176-31-120.eu:8080/nexus/content/repositories/snapshots</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
+    
+    <issueManagement>
+        <system>Github Issue Tracker</system>
+        <url>https://github.com/JCERTIFLab/JCertif-Offline-Box/issues</url>
+    </issueManagement>
+    
+    <dependencies>
+        <dependency>
+            <groupId>com.oracle.jes</groupId>
+            <artifactId>glassfish-jes</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>
