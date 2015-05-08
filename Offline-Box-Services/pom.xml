@@ -1,25 +1,117 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project 
+    xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.jcertif.offlinebox</groupId>
+    <artifactId>Offline-Box-Services</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>Offline-Box-Services</name>
+    <description>Module to rescue with internet connectivity in case of total blackout</description>
+    <url>http://maven.apache.org</url>
+    
+    <properties>
+        <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+    </properties>
 
-  <groupId>com.jcertif.offlinebox</groupId>
-  <artifactId>Offline-Box-Services</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <organization>
+        <name>JCertif</name>
+        <url>http://www.jcertif.com/</url>
+    </organization>
+  
+    <scm>
+        <connection>scm:git:git://github.com/JCERTIFLab/offline-box.git</connection>
+        <developerConnection>scm:git:git@github.com:JCERTIFLab/offline-box.git</developerConnection>
+        <url>https://JCERTIFLab@github.com/JCERTIFLab/offline-box.git</url>
+    </scm>
 
-  <name>Offline-Box-Services</name>
-  <url>http://maven.apache.org</url>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>jcertif-releases</id>
+            <url>http://ns395624.ip-176-31-120.eu:8080/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>jcertif-snapshots</id>
+            <url>http://ns395624.ip-176-31-120.eu:8080/nexus/content/repositories/snapshots</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
+    
+    <issueManagement>
+        <system>Github Issue Tracker</system>
+        <url>https://github.com/JCERTIFLab/JCertif-Offline-Box/issues</url>
+    </issueManagement>
+    
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet-core</artifactId>
+            <version>2.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>2.8</version>
+        </dependency>
+        <!-- Lombok Project for beans notifications for simplify bean code -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.12.6</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- A Java HTTP proxy server (based on Netty) -->
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>littleproxy</artifactId>
+            <version>1.0.0-beta7</version>
+        </dependency>
+        <!-- JARX-RS Provider for XML/JSON serialisation -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>2.2.3</version>
+        </dependency>
+        <!-- Pi4J Adapter -->
+        <dependency>
+            <groupId>com.pi4j</groupId>
+            <artifactId>pi4j-core</artifactId>
+            <version>0.0.5</version>
+        </dependency>
+        <!-- jsoup HTML parser -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.7.3</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.test-framework</groupId>
+            <artifactId>jersey-test-framework-core</artifactId>
+            <version>2.8</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.test-framework.providers</groupId>
+            <artifactId>jersey-test-framework-provider-grizzly2</artifactId>
+            <version>2.8</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
