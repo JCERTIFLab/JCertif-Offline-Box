@@ -68,8 +68,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.12.6</version>
-            <scope>provided</scope>
+            <version>1.16.2</version>
+            <type>jar</type>
         </dependency>
         <!-- A Java HTTP proxy server (based on Netty) -->
         <dependency>

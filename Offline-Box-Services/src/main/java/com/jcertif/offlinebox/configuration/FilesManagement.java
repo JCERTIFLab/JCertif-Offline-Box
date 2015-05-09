@@ -39,7 +39,7 @@ public class FilesManagement {
             FileWriter fileWriter = new FileWriter(path);
             fileWriter.write(jsonStream);
         } else {
-            throw new IllegalArgumentException("Le fichier" + path + "à écrire n'existe pas");
+            throw new IllegalArgumentException("Le fichier" + path + " n'existe pas");
         }
     }
     /**
