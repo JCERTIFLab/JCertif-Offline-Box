@@ -1,6 +1,7 @@
 package com.jcertif.offlinebox.beans;
-
+ 
 import lombok.Data;
+
 
 @Data
 public class Config {
