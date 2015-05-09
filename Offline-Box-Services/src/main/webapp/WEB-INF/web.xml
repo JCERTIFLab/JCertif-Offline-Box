@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+	<display-name>JAX RS Application</display-name>
+</web-app>
+<!--<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <context-param>
+        <param-name>offlinebox.config.root.dir</param-name>
+        <param-value>/home/pi/offline-box/config</param-value>
+    </context-param>
+    <context-param>
+        <param-name>offlinebox.crawler.root.dir</param-name>
+        <param-value>/home/pi/offline-box/storage</param-value>
+    </context-param>
+    <context-param>
+        <param-name>offlinebox.crawler.max.depth</param-name>
+        <param-value>7</param-value>
+    </context-param>
+    <context-param>
+        <param-name>offlinebox.crawler.nb.threads</param-name>
+        <param-value>10</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>com.jcertif.offlinebox.rs.OfflineBoxApplication</servlet-name>
+    </servlet>
+</web-app>-->
