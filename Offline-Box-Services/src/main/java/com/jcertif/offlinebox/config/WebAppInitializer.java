@@ -7,9 +7,16 @@ import javax.servlet.ServletRegistration.Dynamic;
 import org.springframework.web.WebApplicationInitializer;  
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;  
 import org.springframework.web.servlet.DispatcherServlet;  
-  
+
+/**
+ * <p>Initialisation of Web Application</p>
+ *
+ * @author Firas GABSI
+ * @since 1.0
+ */
+
 public class WebAppInitializer implements WebApplicationInitializer {
-	public void onStartup(ServletContext servletContext) throws ServletException {  
+    public void onStartup(ServletContext servletContext) throws ServletException {  
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();  
         ctx.register(AppConfig.class);  
         ctx.setServletContext(servletContext);    

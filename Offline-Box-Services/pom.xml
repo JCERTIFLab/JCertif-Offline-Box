@@ -123,6 +123,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>1.2.3.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.jcertif.offlinebox</groupId>
+            <artifactId>Offline-Box-Services</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
     </dependencies>
     
     <repositories>
