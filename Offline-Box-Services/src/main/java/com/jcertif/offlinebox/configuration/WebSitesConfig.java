@@ -16,6 +16,12 @@ import com.jcertif.offlinebox.beans.WebSiteWrapper;
 public class WebSitesConfig {
     
     private static final String WEB_SITES_FILE_NAME = "webSites.json";
+    
+    private static final WebSitesConfig INSTANCE = new WebSitesConfig();
+
+    public static WebSitesConfig getInstance() {
+        return INSTANCE;
+    }
 
     /**
      * 
@@ -26,12 +32,10 @@ public class WebSitesConfig {
         List<WebSite> sites = null;
         
         try {
-            
             InputStream in = WebSitesConfig.class.getResourceAsStream(WEB_SITES_FILE_NAME);
             final ObjectMapper objectMapper = new ObjectMapper();
             WebSiteWrapper webSiteWrapper = objectMapper.readValue(in, WebSiteWrapper.class);            
             sites = webSiteWrapper.getWebSites();
-            
         } catch (JsonParseException e) {
             Logger.getLogger(WebSitesConfig.class.getName()).log(Level.SEVERE, null, e);
         } catch (IOException ex) {

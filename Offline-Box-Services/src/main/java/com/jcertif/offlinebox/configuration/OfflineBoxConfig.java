@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger; 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 
 public class OfflineBoxConfig {
@@ -29,6 +30,8 @@ public class OfflineBoxConfig {
     
     private final FilesManagement filesManagement;
     
+    private Config config = null;
+    
     private OfflineBoxConfig(){
         filesManagement = new FilesManagement();
     }
@@ -36,12 +39,19 @@ public class OfflineBoxConfig {
     public static OfflineBoxConfig getInstance() {
         return INSTANCE;
     }
+    
+    public Config getConfig(){
+        if(config == null){
+            config = getConfiguration();
+        }
+        return config;
+    }
 
-    public Config getConfiguration() {
+    private Config getConfiguration() {
         
         JSONParser parser = new JSONParser();
         
-        Config config = new Config();
+        Config configObject = new Config();
         Crowing crowing = new Crowing();
         Storage storeg = new Storage();
         Proxy proxy = new Proxy();
@@ -62,15 +72,14 @@ public class OfflineBoxConfig {
             storeg.setMaxUsageLimit((Double) storageConfg.get(MAX_USAGE_LIMIT));
             storeg.setPath((String) storageConfg.get(PATH));
             
-            config.setProxy(proxy);
-            config.setCrowing(crowing);
-            config.setStorage(storeg);
+            configObject.setProxy(proxy);
+            configObject.setCrowing(crowing);
+            configObject.setStorage(storeg);
  
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException | ParseException e) {
         }
  
-        return config;
+        return configObject;
     }
 
     public void saveConfiguration(Config configuration, File configDir) {
