@@ -4,6 +4,13 @@ import java.util.Arrays;
 import java.util.Collection;
 import lombok.Data;
 
+/**
+ * <p>Crowing Configuration</p>
+ *
+ * @author Firas GABSI
+ * @since 1.0
+ */
+
 @Data
 public class Crowing {
     
@@ -11,9 +18,13 @@ public class Crowing {
     
     private Collection<WebSite> listWebSites;
     
+    public Crowing() {
+        
+    }
+    
     public Crowing(boolean activate, WebSite...listWebSites){
         this.activate = activate;
         this.listWebSites = Arrays.asList(listWebSites);
     }
-    
+
 }

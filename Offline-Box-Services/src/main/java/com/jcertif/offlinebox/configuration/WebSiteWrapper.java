@@ -15,10 +15,8 @@
  */
 package com.jcertif.offlinebox.configuration;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.jcertif.offlinebox.beans.WebSite;
 import java.util.List;
-import lombok.Data;
 
 /**
  * A wrapper class that contains list of {@link WebSite}, the purpose of this class is to 

@@ -5,10 +5,12 @@
  */
 package com.jcertif.offlinebox.configuration;
 
+import com.jcertif.offlinebox.beans.Config;
 import com.jcertif.offlinebox.beans.WebSite;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -16,11 +18,11 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Komi Serge Innocent <komi.innocent@gmail.com>
+ * @author Firas GABSI
  */
-public class WebSitesConfigTest {
+public class OfflineBoxConfigTest {
     
-    public WebSitesConfigTest() {
+    public OfflineBoxConfigTest() {
     }
     
     @BeforeClass
@@ -45,10 +47,9 @@ public class WebSitesConfigTest {
     @Test
     public void testRetieveFromConfigFile() {
         System.out.println("retieveFromConfigFile");
-        WebSitesConfig instance = new WebSitesConfig(); 
-        List<WebSite> result = instance.retieveWebSiteFromConfigFile();
-        assertNotNull(result);        
-        assertEquals(3, result.size()); 
+        OfflineBoxConfig boxConfig = OfflineBoxConfig.getInstance();
+        Config config= boxConfig.getConfiguration();
+        Assert.assertNotNull(config);
     }
     
 }

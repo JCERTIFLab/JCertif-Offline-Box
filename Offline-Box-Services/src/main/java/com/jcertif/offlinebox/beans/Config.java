@@ -2,6 +2,12 @@ package com.jcertif.offlinebox.beans;
  
 import lombok.Data;
 
+/**
+ * <p>Configuration Aggregation</p>
+ *
+ * @author Firas GABSI
+ * @since 1.0
+ */
 
 @Data
 public class Config {
@@ -11,6 +17,10 @@ public class Config {
     private Crowing crowing;
     
     private Storage storage;
+
+    public Config() {
+        
+    }
 
     public Config(Proxy proxy, Crowing crowing, Storage storage){
         this.proxy = proxy;
