@@ -11,4 +11,22 @@ En résumé, voici la liste des fonctionnalités (pour l’instant) :
 * Plugins spécifiques : GMail, Outlook.com, Exchange, etc.
 * Box utilisable sans électricité avec une batterie
 
-Ce projet sera une contribution pour résoudre le problème de connexion internet et de la même occasion la possibilité de faire des échanges d’expérience avec des experts internationaux dans divers domaines et surtout le plaisir de travailler en communauté. 
+Ce projet sera une contribution pour résoudre le problème de connexion internet et de la même occasion la possibilité de faire des échanges d’expérience avec des experts internationaux dans divers domaines et surtout le plaisir de travailler en communauté.
+
+## Contribuer au projet JCertif-Offline-Box
+Pour contribuer au projet, vous pouvez suivre les étapes suivantes :
+
+1. Rejoindre le groupe : [JCertif-Offline-Box](https://groups.google.com/forum/?hl=fr#!forum/jcertif-offline-box)
+
+2. Créer un compte Github
+
+3. Envoyer un mail à [JCertif-Offline-Box](jcertif-offline-box@googlegroups.com) avec les éléments suivants :
+ * une petite présentation de vous
+ * votre compte Github
+ * vos souhaits.
+
+Les contributions peuvent être de plusieurs nature, vous pouvez soit:
+
+ * Créer des demandes github pour des bugs ou nouvelles fonctionnalités,commenter celles qui vous intéressent et apporter votre expertise.  
+ * Pour contribuer au code [Faites un fork du projet](http://help.github.com/forking/). Ce faisant référencez toujours la demande que vous résolvez dans le message de votre commit.
+ * Vous pouvez participer aux discussions sur [fil de discussion](jcertif-offline-box@googlegroups.com).
