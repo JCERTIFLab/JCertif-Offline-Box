@@ -6,15 +6,12 @@
 package com.jcertif.offlinebox.configuration;
 
 import com.jcertif.offlinebox.beans.Config;
-import com.jcertif.offlinebox.beans.WebSite;
-import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -46,9 +43,8 @@ public class OfflineBoxConfigTest {
      */
     @Test
     public void testRetieveFromConfigFile() {
-        System.out.println("retieveFromConfigFile");
         OfflineBoxConfig boxConfig = OfflineBoxConfig.getInstance();
-        Config config= boxConfig.getConfiguration();
+        Config config= boxConfig.getConfig();
         Assert.assertNotNull(config);
     }
     

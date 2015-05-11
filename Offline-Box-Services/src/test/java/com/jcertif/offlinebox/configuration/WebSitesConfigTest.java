@@ -45,8 +45,8 @@ public class WebSitesConfigTest {
     @Test
     public void testRetieveFromConfigFile() {
         System.out.println("retieveFromConfigFile");
-        WebSitesConfig instance = new WebSitesConfig(); 
-        List<WebSite> result = instance.retieveWebSiteFromConfigFile();
+        WebSitesConfig instance = WebSitesConfig.getInstance(); 
+        List<WebSite> result = instance.getListeWebSites();
         assertNotNull(result);        
         assertEquals(3, result.size()); 
     }

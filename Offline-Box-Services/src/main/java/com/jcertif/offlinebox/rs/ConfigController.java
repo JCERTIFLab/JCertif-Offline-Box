@@ -6,6 +6,7 @@ import com.jcertif.offlinebox.configuration.OfflineBoxConfig;
 import com.jcertif.offlinebox.configuration.WebSitesConfig;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -28,7 +29,18 @@ public class ConfigController {
     
     @RequestMapping("/getListWebSites")
     public List<WebSite> getListWebSites() {	
-	return webSitesConfig.retieveWebSiteFromConfigFile();
+	return webSitesConfig.getListeWebSites();
+    }
+    
+    @RequestMapping("/addWebSite")
+    public boolean addWebSite(@RequestParam(value = "webSite", required = true) WebSite webSite) {	
+	try{
+            webSitesConfig.getListeWebSites().add(webSite);
+            webSitesConfig.saveConfiguration(webSitesConfig.getListeWebSites());
+            return true;
+        }catch(Exception exception){
+            return false;
+        }
     }
     
 }
