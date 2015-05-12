@@ -6,6 +6,7 @@
 package com.jcertif.offlinebox.configuration;
 
 import com.jcertif.offlinebox.beans.WebSite;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -20,7 +21,10 @@ import static org.junit.Assert.*;
  */
 public class WebSitesConfigTest {
     
+    private WebSitesConfig instance;
+    
     public WebSitesConfigTest() {
+        instance = WebSitesConfig.getInstance(); 
     }
     
     @BeforeClass
@@ -45,10 +49,17 @@ public class WebSitesConfigTest {
     @Test
     public void testRetieveFromConfigFile() {
         System.out.println("retieveFromConfigFile");
-        WebSitesConfig instance = WebSitesConfig.getInstance(); 
         List<WebSite> result = instance.getListeWebSites();
         assertNotNull(result);        
-        assertEquals(3, result.size()); 
+    }
+    
+    @Test
+    public void testSave() {
+        List<WebSite> listWebsite = new ArrayList<>();
+        listWebsite.add(new WebSite("www.google.fr")); 
+        listWebsite.add(new WebSite("www.jcertif.com")); 
+        instance.setListWebSites(listWebsite);
+        instance.saveListWebSites();
     }
     
 }

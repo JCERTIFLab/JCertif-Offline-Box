@@ -5,10 +5,12 @@ import com.jcertif.offlinebox.beans.Config;
 import com.jcertif.offlinebox.beans.Crowing;
 import com.jcertif.offlinebox.beans.Proxy;
 import com.jcertif.offlinebox.beans.Storage;
+import com.jcertif.offlinebox.beans.WebSite;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger; 
 import org.json.simple.JSONObject;
@@ -21,6 +23,8 @@ public class OfflineBoxConfig {
     private static final OfflineBoxConfig INSTANCE = new OfflineBoxConfig();
     
     private static final String CONFIG_FILE_NAME = "offline-box-config.json";
+    private static final String CONFIG_DIRECTRORY_NAME = "Config";
+    
     private static final String PROXY = "proxy";
     private static final String CROWING = "crowing";
     private static final String STORAGE = "storage";
@@ -46,6 +50,10 @@ public class OfflineBoxConfig {
         }
         return config;
     }
+    
+    public void setConfig(Config config){
+        this.config = config;
+    }
 
     private Config getConfiguration() {
         
@@ -58,7 +66,7 @@ public class OfflineBoxConfig {
  
         try {
  
-            Object obj = parser.parse(new FileReader(CONFIG_FILE_NAME));
+            Object obj = parser.parse(new FileReader(CONFIG_DIRECTRORY_NAME+"\\"+CONFIG_FILE_NAME));
  
             JSONObject jsonObject = (JSONObject) obj;
  
@@ -76,24 +84,50 @@ public class OfflineBoxConfig {
             configObject.setCrowing(crowing);
             configObject.setStorage(storeg);
  
-        } catch (IOException | ParseException e) {
+        } catch (IOException | ParseException ex) {
+            Logger.getLogger(OfflineBoxConfig.class.getName()).log(Level.SEVERE, null, ex);
         }
  
         return configObject;
     }
 
-    public void saveConfiguration(Config configuration, File configDir) {
+    public void saveConfiguration() {
         try {
             ObjectMapper mapper = new ObjectMapper();
-            filesManagement.makeDirectories(configDir);
-            File configFile = new File(configDir, CONFIG_FILE_NAME);
+            filesManagement.makeDirectories(new File(CONFIG_DIRECTRORY_NAME+"\\"+CONFIG_FILE_NAME));
+            File configFile = new File(CONFIG_DIRECTRORY_NAME, CONFIG_FILE_NAME);
             if (!configFile.exists()) {
                 filesManagement.createFile(configFile);
             }
-            mapper.writeValue(configFile, configuration);
+            mapper.writeValue(configFile, config);
         } catch (IOException ex) {
             Logger.getLogger(OfflineBoxConfig.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void resetConfig(){
+        this.config = getInitialConfig();
+        saveConfiguration();
+    }
+    
+    private Config getInitialConfig(){
+        Config initConfig = new Config();
+        
+        Proxy proxy = new Proxy();
+        proxy.setActivate(false);
+        initConfig.setProxy(proxy);
+        
+        Crowing crowing = new Crowing();
+        crowing.setActivate(false);
+        crowing.setListWebSites(new ArrayList<WebSite>());
+        initConfig.setCrowing(crowing);
+        
+        Storage storeg = new Storage();
+        storeg.setPath("c://Crowing//");
+        storeg.setMaxUsageLimit(100);
+        initConfig.setStorage(storeg);
+        
+        return initConfig;
     }
 
 }

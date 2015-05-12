@@ -17,21 +17,31 @@ public class ProxyController {
         offlineBoxConfig = OfflineBoxConfig.getInstance();
     }
 	
-    @RequestMapping("/getConfig")
+    @RequestMapping("/getProxyConfig")
     public Proxy getProxyConfig() {	
         return offlineBoxConfig.getConfig().getProxy();
     }
     
-    @RequestMapping("/setConfig")
-    public boolean setProxyStatut(@RequestParam(value = "newStatut", required = false) Boolean newStatut) {	
+    @RequestMapping("/setProxyStatut")
+    public boolean setProxyStatut(@RequestParam(value = "newStatut", required = true) Boolean newStatut) {	
         try{
-            Config newConfiguration = offlineBoxConfig.getConfig();
-            newConfiguration.setProxy(new Proxy(newStatut));
-            offlineBoxConfig.saveConfiguration(newConfiguration, null);
+            offlineBoxConfig.getConfig().setProxy(new Proxy(newStatut));
+            offlineBoxConfig.saveConfiguration();
             return true;
         }catch(Exception e){
             return false;
         }
     }
     
+    @RequestMapping("/startProxy")
+    public boolean startProxy() {	
+        
+        return true; 
+    }
+    
+    @RequestMapping("/stopProxy")
+    public boolean stopProxy() {	
+        
+        return true; 
+    }
 }

@@ -2,7 +2,6 @@ package com.jcertif.offlinebox.configuration;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jcertif.offlinebox.beans.Config;
 import com.jcertif.offlinebox.beans.WebSite; 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,6 +17,7 @@ import java.io.File;
 public class WebSitesConfig {
     
     private static final String WEB_SITES_FILE_NAME = "webSites.json";
+    private static final String CONFIG_DIRECTRORY_NAME = "Config";
     
     private static final WebSitesConfig INSTANCE = new WebSitesConfig();
     
@@ -39,17 +39,17 @@ public class WebSitesConfig {
         }
         return listWebSites;
     }
+    
+    public void setListWebSites(List<WebSite> listWebSites){
+        this.listWebSites = listWebSites;
+    }
 
-    /**
-     * 
-     * @return 
-     */
     private List<WebSite> retieveWebSiteFromConfigFile() {
         
         List<WebSite> sites = null;
         
         try {
-            InputStream in = WebSitesConfig.class.getResourceAsStream(WEB_SITES_FILE_NAME);
+            InputStream in = WebSitesConfig.class.getResourceAsStream(CONFIG_DIRECTRORY_NAME+"\\"+WEB_SITES_FILE_NAME);
             final ObjectMapper objectMapper = new ObjectMapper();
             WebSiteWrapper webSiteWrapper = objectMapper.readValue(in, WebSiteWrapper.class);            
             sites = webSiteWrapper.getWebSites();
@@ -62,14 +62,15 @@ public class WebSitesConfig {
         return sites;
     }
     
-    public void saveConfiguration(List<WebSite> listeWebSites) {
+    public void saveListWebSites() {
         try {
             ObjectMapper mapper = new ObjectMapper();
-            File configFile = new File(WEB_SITES_FILE_NAME);
+            filesManagement.makeDirectories(new File(CONFIG_DIRECTRORY_NAME+"\\"+WEB_SITES_FILE_NAME));
+            File configFile = new File(CONFIG_DIRECTRORY_NAME, WEB_SITES_FILE_NAME);
             if (!configFile.exists()) {
                 filesManagement.createFile(configFile);
             }
-            mapper.writeValue(configFile, listeWebSites);
+            mapper.writeValue(configFile, listWebSites);
         } catch (IOException ex) {
             Logger.getLogger(OfflineBoxConfig.class.getName()).log(Level.SEVERE, null, ex);
         }

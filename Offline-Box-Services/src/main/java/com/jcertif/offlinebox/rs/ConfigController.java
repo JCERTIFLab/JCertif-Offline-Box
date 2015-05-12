@@ -35,12 +35,42 @@ public class ConfigController {
     @RequestMapping("/addWebSite")
     public boolean addWebSite(@RequestParam(value = "webSite", required = true) WebSite webSite) {	
 	try{
-            webSitesConfig.getListeWebSites().add(webSite);
-            webSitesConfig.saveConfiguration(webSitesConfig.getListeWebSites());
-            return true;
+            if(webSite != null){
+                webSitesConfig.getListeWebSites().add(webSite);
+                webSitesConfig.saveListWebSites();
+                return true;
+            }else{
+                return false;
+            }
         }catch(Exception exception){
             return false;
         }
+    }
+    
+    @RequestMapping("/setWebSitesList")
+    public boolean setWebSitesList(@RequestParam(value = "listWebSites", required = true) List<WebSite> listWebSites) {	
+	try{
+            if(listWebSites != null){
+                webSitesConfig.setListWebSites(listWebSites);
+                webSitesConfig.saveListWebSites();
+                return true;
+            }else{
+                return false;
+            }
+        }catch(Exception exception){
+            return false;
+        }
+    }
+    
+    @RequestMapping("/setConfig")
+    public void addConfig(@RequestParam(value = "config", required = true) Config config) {	
+	offlineBoxConfig.setConfig(config);
+        offlineBoxConfig.saveConfiguration();
+    }
+    
+    @RequestMapping("/resetConfig")
+    public void resetConfig() {	
+	offlineBoxConfig.resetConfig();
     }
     
 }
